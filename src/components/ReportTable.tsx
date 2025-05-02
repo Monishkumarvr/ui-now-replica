@@ -1,6 +1,6 @@
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, X } from "lucide-react";
 
 // Sample data based on the image
 const reportData = [
@@ -88,6 +88,23 @@ const reportData = [
     weight: 0,
     endTime: { date: "18-12-2023", time: "13:29:32" },
     duration: "12 Mins 55 Secs"
+  },
+  {
+    id: "SW2023121800X",
+    startTime: { date: "18-12-2023", time: "14:05:21" },
+    totalEnergy: 0,
+    vibroCharging: "2 Mins 10 Secs",
+    spectrometerCheck: true,
+    atasCheck: false,
+    chemicalCorrection: "20 Secs",
+    pyrometerCheck: true,
+    deslaging: true,
+    tapping: "18 Secs",
+    melting: "8 Mins 12 Secs",
+    temperature: 0,
+    weight: 0,
+    endTime: { date: "18-12-2023", time: "14:14:01" },
+    duration: "8 Mins 40 Secs"
   }
 ];
 
@@ -129,7 +146,11 @@ const ReportTable = () => {
                   {row.spectrometerCheck && <CheckCircle className="h-6 w-6 mx-auto text-green-500" />}
                 </TableCell>
                 <TableCell className="border-r text-center">
-                  {row.atasCheck && <CheckCircle className="h-6 w-6 mx-auto text-green-500" />}
+                  {row.atasCheck ? (
+                    <CheckCircle className="h-6 w-6 mx-auto text-green-500" />
+                  ) : (
+                    <X className="h-6 w-6 mx-auto text-red-500" />
+                  )}
                 </TableCell>
                 <TableCell className="border-r text-center">{row.chemicalCorrection}</TableCell>
                 <TableCell className="border-r text-center">
